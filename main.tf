@@ -56,7 +56,7 @@ resource "aws_instance" "web" {
     key_name = var.key_name
     security_groups = [aws_security_group.jenkins_sg.name]
     user_data = "${file("Install_jenkins.sh")}"
-    tags = = {
+    tags = {
         Name = "Jenkins"
     }
 }
