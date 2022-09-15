@@ -13,8 +13,4 @@ variable "cidr_block" {
 
 variable "key_name" {
   description = "Name of keypair to ssh"
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> f6ed89e2116409a56796be6f546db0e08cc79e8d
