@@ -42,10 +42,4 @@ override.tf.json
 .terraformrc
 terraform.rc
 
-<<<<<<< HEAD
 jenkins.pem
-=======
-# Ignore any SSH keys
-*.pem
-*.pub
->>>>>>> 5de54fe6070593e093369b74127f8ba3df601bf8
