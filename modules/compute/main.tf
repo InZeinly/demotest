@@ -22,7 +22,7 @@ data "aws_ami" "ubuntu" {
       values = ["hvm"]
    }
 
-   owners = ["152617774363"]
+   owners = ["self"]
 }
 
 # Creating an EC2 instance called jenkins_server
