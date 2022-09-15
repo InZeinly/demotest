@@ -1,22 +1,15 @@
 variable "aws_region" {
-  default = "eu-central-1"
+  description = "AWS region to create resources"
+  default     = "eu-central-1"
 }
 
-
-variable "vpc_cidr_block" {
-  description = "CIDR block for VPC"
-  type = string
-  default = "172.31.0.0/16"
+variable "vpc_id" {
+  description = "VPC for Jenkins"
 }
 
-variable "public_subnet_cidr_block" {
-  description = "CIDR block for publick subnet"
-  type = string
-  default = "172.31.0.0/20"
+variable "cidr_block" {
+  description = "CIDR Block to allow Jenkins Access"
 }
 
-variable "my_ip" {
-    description = "My ip"
-    type = string
-    sensitive = true
-}
+variable "key_name" {
+  description = "Name of keypair to ssh"
