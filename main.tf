@@ -19,7 +19,7 @@ resource "aws_security_group" "jenkins_sg" {
     cidr_blocks      = [var.cidr_block]
   }
 
-  egress {
+  ingress {
     from_port        = 0
     to_port          = 0
     protocol         = "-1"
@@ -44,6 +44,11 @@ data "aws_ami" "ubuntu-18_04" {
   filter {
     name = "virtualization-type"
     values = ["hvm-ssd"]
+  }
+
+  filter {
+    name = "root-device-type"
+    values = ["ebs"]
   }
 
   owners = ["amazon"]
