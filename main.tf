@@ -19,7 +19,7 @@ resource "aws_security_group" "jenkins_sg" {
     cidr_blocks      = [var.cidr_block]
   }
 
-  ingress {
+  egress {
     from_port        = 0
     to_port          = 0
     protocol         = "-1"
@@ -56,7 +56,7 @@ data "aws_ami" "ubuntu-18_04" {
 }
 
 resource "aws_instance" "web" {
-    ami = data.aws_ami.ubuntu-18_04
+    ami = data.aws_ami.ubuntu-18_04.id
     instance_type = "t2.micro"
     key_name = var.key_name
     security_groups = [aws_security_group.jenkins_sg.name]
