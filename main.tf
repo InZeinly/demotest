@@ -56,13 +56,13 @@ data "aws_ami" "ubuntu-18_04" {
 }
 
 resource "aws_instance" "web" {
-    ami = data.aws_ami.ubuntu-18_04.id
-    instance_type = "t2.micro"
-    key_name = var.key_name
-    security_groups = [aws_security_group.jenkins_sg.name]
-    user_data = "${file("Install_jenkins.sh")}"
-    tags = {
-        Name = "Jenkins"
-    }
+  ami = data.aws_ami.ubuntu-18_04.id
+  instance_type = "t2.micro"
+  key_name = var.key_name
+  security_groups = [aws_security_group.jenkins_sg.name]
+  user_data = "${file("Install_jenkins.sh")}"
+  tags = {
+    Name = "Jenkins"
+  }
 }
 
