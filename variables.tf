@@ -4,11 +4,11 @@ variable "aws_region" {
 }
 
 variable "vpc_id" {
-  description = "VPC for Jenkins"
+  description = "172.31.0.0/16"
 }
 
 variable "cidr_block" {
-  description = "CIDR Block to allow Jenkins Access"
+  description = "0.0.0.0/0"
 }
 
 variable "key_name" {
