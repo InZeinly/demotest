@@ -64,7 +64,7 @@ resource "aws_subnet" "test_public_subnet" {
     vpc_id = aws_vpc.test_vpc.id
 
     #Setting the CIDR block to the variable public_subnet_cidr_block
-    availability_zone = data.aws_availability_zones.available
+    availability_zone = data.aws_availability_zones.available[0]
 
     # Setting the tag name
     tags = {
