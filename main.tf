@@ -43,7 +43,7 @@ data "aws_ami" "ubuntu-18_04" {
 
   filter {
     name = "virtualization-type"
-    values = ["hvm-ssd"]
+    values = ["hvm"]
   }
 
   filter {
@@ -51,7 +51,7 @@ data "aws_ami" "ubuntu-18_04" {
     values = ["ebs"]
   }
 
-  owners = ["amazon"]
+  owners = ["152617774363"]
 
 }
 
