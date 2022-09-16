@@ -29,7 +29,7 @@ resource "aws_security_group" "jenkins_sg" {
     from_port        = 22
     to_port          = 22
     protocol         = "tcp"
-    cidr_blocks      = [var.cidr_block]
+    cidr_blocks      = [var.cidr_block[0]]
   }
 
   egress {
