@@ -14,7 +14,7 @@ provider "aws" {
 resource "aws_security_group" "jenkins_sg" {
   name        = "jenkins_sg"
   description = "Allow Jenkins Traffic"
-  vpc_id      = vpc-0645f74fa2d2a544f
+  vpc_id      = "vpc-0645f74fa2d2a544f"
 
   ingress {
     description      = "Allow from Personal CIDR block"
