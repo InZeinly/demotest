@@ -17,3 +17,13 @@ variable "key_name" {
   description = "Name of keypair to ssh"
   default = "aws-terraform"
 }
+
+variable "install_jenkins" {
+  description = "Install Jenkins"
+  default = "${file("install_jenkins.sh")}"
+}
+
+variable "install_docker" {
+  description = "Install Docker"
+  default = "${file("install_docker.sh")}"
+}

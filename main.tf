@@ -71,7 +71,8 @@ resource "aws_instance" "web" {
   instance_type   = "t2.micro"
   key_name        = var.key_name
   security_groups = [aws_security_group.jenkins_sg.name]
-  user_data       = "${file("install_jenkins.sh")}"
+  # user_data       = "${file("install_jenkins.sh")}"
+  install_jenkins = var.install_jenkins
   tags = {
     Name = "Jenkins Master"
   }
@@ -82,7 +83,8 @@ resource "aws_instance" "web2" {
   instance_type = "t2.micro"
   key_name = "aws-terraform"
   security_groups = [aws_security_group.jenkins_sg.name]
-  user_data       = "${file("install_jenkins.sh")}"
+  # user_data       = "${file("install_jenkins.sh")}"
+  install_docker = var.install_docker
   tags = {
     "Name" = "Jenkins Slave"
   }
