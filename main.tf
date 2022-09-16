@@ -1,5 +1,10 @@
 terraform {
-  required_version = ">= 0.12"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.0"
+    }
+  }
 }
 
 provider "aws" {
@@ -9,14 +14,14 @@ provider "aws" {
 resource "aws_security_group" "jenkins_sg" {
   name        = "jenkins_sg"
   description = "Allow Jenkins Traffic"
-  vpc_id      = "vpc-0645f74fa2d2a544f"
+  vpc_id      = [var.vpc_id]
 
   ingress {
     description      = "Allow from Personal CIDR block"
     from_port        = 8080
     to_port          = 8080
     protocol         = "tcp"
-    cidr_blocks      = ["0.0.0.0/0"]
+    cidr_blocks      = [var.cidr_blocks]
   }
 
   ingress {
@@ -24,7 +29,7 @@ resource "aws_security_group" "jenkins_sg" {
     from_port        = 22
     to_port          = 22
     protocol         = "tcp"
-    cidr_blocks      = ["0.0.0.0/0"]
+    cidr_blocks      = [var.cidr_blocks]
   }
 
   egress {
@@ -64,7 +69,7 @@ data "aws_ami" "ubuntu_18_04" {
 resource "aws_instance" "web" {
   ami             = data.aws_ami.ubuntu_18_04.id
   instance_type   = "t2.micro"
-  key_name        = "aws-terraform"
+  key_name        = var.key_name
   security_groups = [aws_security_group.jenkins_sg.name]
   user_data       = "${file("install_jenkins.sh")}"
   tags = {

@@ -1,3 +1,3 @@
-output "output_name" {
-    value = "some resource"
+output "Creating" {
+    value = "2 Ubuntu 18.04"
 }
