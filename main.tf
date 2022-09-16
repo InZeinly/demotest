@@ -72,7 +72,6 @@ resource "aws_instance" "web" {
   key_name        = var.key_name
   security_groups = [aws_security_group.jenkins_sg.name]
   user_data       = "${file("install_jenkins.sh")}"
-  user_data1       = "${file("install_docker.sh")}"
   tags = {
     Name = "Jenkins Master"
   }
@@ -84,7 +83,6 @@ resource "aws_instance" "web2" {
   key_name = "aws-terraform"
   security_groups = [aws_security_group.jenkins_sg.name]
   user_data       = "${file("install_jenkins.sh")}"
-  user_data1       = "${file("install_docker.sh")}"
   tags = {
     "Name" = "Jenkins Slave"
   }
