@@ -5,15 +5,15 @@ variable "aws_region" {
 
 variable "vpc_id" {
   description = "VPC for Jenkins"
-  default = ["vpc-0645f74fa2d2a544f"]
+  default = "vpc-0645f74fa2d2a544f"
 }
 
 variable "cidr_block" {
   description = "CIDR Block to allow Jenkins Access"
-  default = ["0.0.0.0/0"]
+  default = "0.0.0.0/0"
 }
 
 variable "key_name" {
   description = "Name of keypair to ssh"
-  default = ["aws-terraform"]
+  default = "aws-terraform"
 }
