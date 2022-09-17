@@ -82,13 +82,13 @@ resource "aws_instance" "master" {
   # user_data       = "${file("install_jenkins.sh")}"
   # user_data = templatefile("${path.module}/install_jenkins.sh",{})
   data "template_cloudinit_config" "user-data" { 
-  part { 
-    content_type = "text/x-shellscript"
-    content  = "${file("install_jenkins.sh")}"
+    part { 
+      content_type = "text/x-shellscript"
+      content  = "${file("install_jenkins.sh")}"
   } 
-  part { 
-    content_type = "text/x-shellscript" 
-    content  = "${file("install_docker.sh")}" 
+    part { 
+      content_type = "text/x-shellscript" 
+      content  = "${file("install_docker.sh")}" 
   } 
 } 
   tags = {
