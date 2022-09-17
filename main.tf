@@ -79,8 +79,12 @@ resource "aws_instance" "master" {
   instance_type   = "t2.micro"
   key_name        = var.key_name
   security_groups = [aws_security_group.jenkins_sg.name]
-  # user_data       = "${file("install_jenkins.sh")}"
-  user_data = templatefile("${path.module}/install_jenkins.sh",{},"${path.module}/install_docker.sh",{})
+  user_data       = "${
+    file("install_jenkins.sh")
+    }, ${
+      file("install_docker.sh")
+      }"
+  # user_data = templatefile("${path.module}/install_jenkins.sh",{})
   tags = {
     Name = "Jenkins Master"
   }
