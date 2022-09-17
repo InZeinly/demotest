@@ -80,17 +80,7 @@ resource "aws_instance" "master" {
   key_name        = var.key_name
   security_groups = [aws_security_group.jenkins_sg.name]
   # user_data       = "${file("install_jenkins.sh")}"
-  # user_data = templatefile("${path.module}/install_jenkins.sh",{})
-  data "template_cloudinit_config" "user-data" { 
-    part { 
-      content_type = "text/x-shellscript"
-      content  = "${file("install_jenkins.sh")}"
-  } 
-    part { 
-      content_type = "text/x-shellscript" 
-      content  = "${file("install_docker.sh")}" 
-  } 
-} 
+  user_data = templatefile("${path.module}/install_jenkins.sh",{},"${path.module}/install_docker.sh",{})
   tags = {
     Name = "Jenkins Master"
   }
