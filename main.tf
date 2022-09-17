@@ -66,7 +66,7 @@ data "aws_ami" "ubuntu_18_04" {
   owners = ["amazon"] # Canonical
 }
 
-resource "aws_instance" "web" {
+resource "aws_instance" "master" {
   ami             = data.aws_ami.ubuntu_18_04.id
   instance_type   = "t2.micro"
   key_name        = var.key_name
@@ -78,14 +78,26 @@ resource "aws_instance" "web" {
   }
 }
 
-resource "aws_instance" "web2" {
+resource "aws_instance" "slave" {
   ami = data.aws_ami.ubuntu_18_04.id
   instance_type = "t2.micro"
   key_name = "aws-terraform"
   security_groups = [aws_security_group.jenkins_sg.name]
   # user_data       = "${file("install_jenkins.sh")}"
-  user_data = templatefile("${path.module}/install_jenkins.sh",{})
+  user_data = templatefile("${path.module}/install_docker.sh",{})
   tags = {
     "Name" = "Jenkins Slave"
+  }
+}
+
+resource "aws_instance" "production" {
+  ami = data.aws_ami.ubuntu_18_04.id
+  instance_type = "t2.micro"
+  key_name = "aws-terraform"
+  security_groups = [aws_security_group.jenkins_sg.name]
+  # user_data       = "${file("install_jenkins.sh")}"
+  user_data = templatefile("${path.module}/install_docker.sh",{})
+  tags = {
+    "Name" = "Production"
   }
 }
