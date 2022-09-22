@@ -5,5 +5,5 @@ sudo apt install -y openjdk-11-jdk
 sudo apt  install -y docker.io
 mkdir /home/ubuntu/jenkins/
 sudo chown ubuntu:ubuntu /home/ubuntu/jenkins
-sudo chmod 660 /var/run/docker.sock
+sudo chmod 666 /var/run/docker.sock
 sudo usermod -a -G docker ubuntu
