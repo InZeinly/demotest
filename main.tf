@@ -31,6 +31,14 @@ resource "aws_security_group" "jenkins_sg" {
     protocol         = "tcp"
     cidr_blocks      = [var.cidr_block]
   }
+  
+  ingress {
+    description      = "Port to open Docker image"
+    from_port        = 8888
+    to_port          = 8888
+    protocol         = "tcp"
+    cidr_blocks      = [var.cidr_block]
+  }
 
   ingress {
     description      = "Allow HTTP"
