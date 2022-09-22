@@ -116,7 +116,7 @@ resource "aws_instance" "production" {
   key_name = "aws-terraform"
   security_groups = [aws_security_group.jenkins_sg.name]
   # user_data       = "${file("install_jenkins.sh")}"
-  user_data = templatefile("${path.module}/install_apache.sh",{})
+  user_data = templatefile("${path.module}/install_docker.sh",{})
   tags = {
     "Name" = "Production"
   }
